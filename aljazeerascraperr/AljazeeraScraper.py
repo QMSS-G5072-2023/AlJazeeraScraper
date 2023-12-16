@@ -6,7 +6,7 @@
 
 from bs4 import BeautifulSoup 
 from datetime import datetime
-from utils import WebDriverHelper, LoggingHelper
+from .utils import WebDriverHelper, LoggingHelper
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
@@ -227,7 +227,7 @@ class AlJazeeraScraper:
         """
         Closes the Selenium WebDriver.
         """
-        
+
         if self.driver:
             self.driver.quit()
 

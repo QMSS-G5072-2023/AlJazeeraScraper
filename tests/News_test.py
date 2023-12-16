@@ -4,7 +4,7 @@
 # In[ ]:
 
 
-from AljazeeraScraper import AlJazeeraScraper
+from aljazeerascraperr.AljazeeraScraper import AlJazeeraScraper
 scraper = AlJazeeraScraper()
 
 try:
