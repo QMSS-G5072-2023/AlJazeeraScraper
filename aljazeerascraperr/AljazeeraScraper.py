@@ -47,9 +47,7 @@ class AlJazeeraScraper:
         self._soup = None
         self.logger_helper = LoggingHelper()
         self.logger = self.logger_helper.logger
-
-        driver_path = os.getenv('CHROMEDRIVER_PATH', '/Users/peizhi/chromedriver-mac-x64/chromedriver')
-        self.driver_helper = WebDriverHelper(driver_path)
+        self.driver_helper = WebDriverHelper()
         self.driver = self.driver_helper.init_web_driver()
 
     def requestPageUsingWebDriver(self, link):

@@ -14,8 +14,7 @@ import ssl
 from datetime import datetime
 
 class WebDriverHelper:
-    def __init__(self, driver_path):
-        self.driver_path = driver_path
+    def __init__(self):
         self.options = self._setup_options()
 
     def _setup_options(self):
@@ -26,9 +25,15 @@ class WebDriverHelper:
         return options
 
     def init_web_driver(self):
-        service = Service(executable_path=self.driver_path)
-        return webdriver.Chrome(service=service, options=self.options)
+        if os.environ.get('CI'):  # 'CI' environment variable in CI/CD environments
+            service = Service(executable_path='chromedriver')
+        else:
+            # Path for local development
+            path_to_chromedriver = '/Users/peizhi/chromedriver-mac-x64/chromedriver'
+            service = Service(executable_path=path_to_chromedriver)
 
+        driver = webdriver.Chrome(service=service, options=self.options)
+        return driver
 
 class LoggingHelper:
     def __init__(self, filename=None):
